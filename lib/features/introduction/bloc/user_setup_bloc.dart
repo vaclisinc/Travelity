@@ -12,6 +12,7 @@ part 'user_setup_state.dart';
 
 class UserSetupBloc extends Bloc<UserSetupEvent, UserSetupState> {
   UserSetupBloc(this.userLocalSource) : super(const UserSetupInitial()) {
+    on<LoadInitUser>(loadInitUser);
     on<SetInterests>(setInterests);
     on<SetPersonality>(setPersonality);
     on<SetBio>(setBio);
@@ -33,6 +34,23 @@ class UserSetupBloc extends Bloc<UserSetupEvent, UserSetupState> {
   TravelPaceTag? travelPace;
   List<FoodTag> food = [];
   AccommodationTag? accommodation;
+
+  Future<void> loadInitUser(
+      LoadInitUser event, Emitter<UserSetupState> emit) async {
+    User? user = userLocalSource.getUser();
+    if (user != null) {
+      id = user.id;
+      name = user.name;
+      bio = user.bio;
+      interests = user.interests!;
+      personality = user.personality;
+      travelPreference = user.travelPreference!;
+      travelPace = user.travelPace;
+      food = user.food!;
+      accommodation = user.accommodation;
+      emit(UserSetupLoaded(user: user));
+    }
+  }
 
   Future<void> setInterests(
       SetInterests event, Emitter<UserSetupState> emit) async {

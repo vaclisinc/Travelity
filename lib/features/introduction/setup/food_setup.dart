@@ -17,6 +17,7 @@ class _FoodSetupState extends State<FoodSetup> {
   Widget build(BuildContext context) {
     return BlocBuilder<UserSetupBloc, UserSetupState>(
       builder: (context, state) {
+        selectedTags = List.from(state.user.food ?? []);
         return Wrap(
             spacing: 10,
             children: availFoodTags

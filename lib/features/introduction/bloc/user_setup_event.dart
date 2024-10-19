@@ -7,6 +7,13 @@ sealed class UserSetupEvent extends Equatable {
   List<Object> get props => [];
 }
 
+class LoadInitUser extends UserSetupEvent {
+  const LoadInitUser();
+
+  @override
+  List<Object> get props => [];
+}
+
 class SetInterests extends UserSetupEvent {
   const SetInterests({required this.interests});
 

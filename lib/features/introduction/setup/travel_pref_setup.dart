@@ -17,6 +17,7 @@ class _TravelPrefSetupState extends State<TravelPrefSetup> {
   Widget build(BuildContext context) {
     return BlocBuilder<UserSetupBloc, UserSetupState>(
       builder: (context, state) {
+        selectedTags = List.from(state.user.travelPreference ?? []);
         return Wrap(
             spacing: 10,
             children: availTravelPreferenceTags

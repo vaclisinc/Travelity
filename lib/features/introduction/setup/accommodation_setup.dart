@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travelity/constant/tags.dart';
-import 'package:travelity/core/model/tags_m.dart';
 import 'package:travelity/features/introduction/bloc/user_setup_bloc.dart';
 
 class AccommodationSetup extends StatefulWidget {

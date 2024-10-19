@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:travelity/constant/tags.dart';
 import 'package:travelity/features/home/ai_assistant.dart';
+import 'package:travelity/features/home/profile.dart';
 import 'package:travelity/features/schedule/schedule.dart';
 
 class HomePage extends StatefulWidget {
@@ -21,7 +22,7 @@ class _HomePageState extends State<HomePage> {
       body: switch (currentPageIndex) {
         0 => ScheduleBody(allEvents: mockEvents),
         1 => const AIAssistantBody(),
-        2 => const Center(child: Text('Profile page')),
+        2 => const ProfileBody(),
         _ => const Center(child: Text('Home page')),
       },
       bottomNavigationBar: NavigationBar(
