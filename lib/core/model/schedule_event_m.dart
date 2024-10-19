@@ -1,24 +1,21 @@
 import 'package:equatable/equatable.dart';
+import 'package:travelity/core/model/location_m.dart';
 
 class ScheduleEvent extends Equatable {
   const ScheduleEvent(
       {required this.id,
-      required this.title,
-      required this.description,
       required this.startTime,
-      required this.isCurrent});
+      required this.isCurrent,
+      required this.location});
 
   final String id;
-  final String title;
-  final String description;
   final String startTime;
   final bool isCurrent;
+  final Location location;
 
   @override
   List<Object?> get props => [
         id,
-        title,
-        description,
         startTime,
         isCurrent,
       ];

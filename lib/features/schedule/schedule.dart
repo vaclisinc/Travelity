@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:timelines/timelines.dart';
 import 'package:travelity/core/model/schedule_event_m.dart';
+import 'package:travelity/features/location/location_detail.dart';
 
 class ScheduleBody extends StatelessWidget {
   const ScheduleBody({super.key, required this.allEvents});
@@ -63,24 +64,38 @@ class ScheduleTimeLine extends StatelessWidget {
           itemCount: events.length,
           contentsBuilder: (context, index) {
             final event = events[index];
-            return Padding(
-              padding: const EdgeInsets.only(left: 16.0, bottom: 20.0, top: 15),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    event.title,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: event.isCurrent ? Colors.blue : Colors.black,
+            return GestureDetector(
+              onTap: () => {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => LocationDetailPage(
+                      location: event.location,
                     ),
+                    fullscreenDialog: true,
                   ),
-                  const SizedBox(height: 4),
-                  Text(
-                    event.description,
-                    style: const TextStyle(color: Colors.grey),
-                  ),
-                ],
+                )
+              },
+              child: Padding(
+                padding:
+                    const EdgeInsets.only(left: 16.0, bottom: 20.0, top: 15),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      event.location.name,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: event.isCurrent ? Colors.blue : Colors.black,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      event.location.description,
+                      style: const TextStyle(color: Colors.grey),
+                    ),
+                  ],
+                ),
               ),
             );
           },
@@ -104,24 +119,3 @@ class ScheduleTimeLine extends StatelessWidget {
     );
   }
 }
-
-final List<ScheduleEvent> events = [
-  const ScheduleEvent(
-      id: '1',
-      title: '인스타그램',
-      description: '바다나는 어떤 이야기지?',
-      startTime: '2023-07-01 10:00',
-      isCurrent: true),
-  const ScheduleEvent(
-      id: '2',
-      title: '인스타그램',
-      description: '바다나는 어떤 이야기지?',
-      startTime: '2023-07-01 10:00',
-      isCurrent: false),
-  const ScheduleEvent(
-      id: '3',
-      title: '인스타그램',
-      description: '바다나는 어떤 이야기지?',
-      startTime: '2023-07-01 10:00',
-      isCurrent: false),
-];

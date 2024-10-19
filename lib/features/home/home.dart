@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> {
         title: const Text('Home'),
       ),
       body: switch (currentPageIndex) {
-        0 => const ScheduleBody(allEvents: mockEvents),
+        0 => ScheduleBody(allEvents: mockEvents),
         1 => const AIAssistantBody(),
         2 => const Center(child: Text('Profile page')),
         _ => const Center(child: Text('Home page')),
