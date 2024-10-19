@@ -20,8 +20,22 @@ class AIAssistantBody extends StatelessWidget {
         body: Column(
           children: [
             Expanded(
-              child: SingleChildScrollView(
-                  child: LocationPreview(location: mockLocations[0])),
+              child: BlocBuilder<AiAssistantBloc, AiAssistantState>(
+                builder: (context, state) {
+                  if (state is RecommendationLoaded) {
+                    return SingleChildScrollView(
+                        child: Column(
+                      children: state.locations.map((e) {
+                        return LocationPreview(location: e);
+                      }).toList(),
+                    ));
+                  }
+                  if (state is RecommendationLoading) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+                  return Container();
+                },
+              ),
             ),
             const PromptField(),
           ],
