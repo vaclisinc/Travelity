@@ -12,6 +12,7 @@ const List<InterestTag> availInterestTags = [
   InterestTag(tag: 'History'),
   InterestTag(tag: 'Culture'),
   InterestTag(tag: 'Business'),
+  InterestTag(tag: 'Shopping')
 ];
 
 const List<PersonalityTag> availPersonalityTags = [
