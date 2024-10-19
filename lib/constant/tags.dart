@@ -27,7 +27,7 @@ const List<TravelPreferenceTag> availTravelPreferenceTags = [
 ];
 
 const List<TravelPaceTag> availTravelPaceTags = [
-  TravelPaceTag(tag: 'Fast'),
-  TravelPaceTag(tag: 'Medium'),
   TravelPaceTag(tag: 'Slow'),
+  TravelPaceTag(tag: 'Medium'),
+  TravelPaceTag(tag: 'Fast'),
 ];

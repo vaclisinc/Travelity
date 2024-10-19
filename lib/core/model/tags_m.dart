@@ -22,6 +22,17 @@ class PersonalityTag extends Equatable {
   List<Object?> get props => [tag];
 }
 
+class BioField extends Equatable {
+  const BioField({
+    required this.field,
+  });
+
+  final String field;
+
+  @override
+  List<Object?> get props => [field];
+}
+
 class TravelPreferenceTag extends Equatable {
   const TravelPreferenceTag({
     required this.tag,

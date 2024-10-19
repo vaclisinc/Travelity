@@ -12,13 +12,13 @@ class User extends Equatable {
     required this.travelPace,
   });
 
-  final String id;
-  final String name;
-  final String bio;
-  final List<InterestTag> interests;
-  final List<PersonalityTag> personality;
-  final List<TravelPreferenceTag> travelPreference;
-  final List<TravelPaceTag> travelPace;
+  final String? id;
+  final String? name;
+  final String? bio;
+  final List<InterestTag>? interests;
+  final PersonalityTag? personality;
+  final List<TravelPreferenceTag>? travelPreference;
+  final TravelPaceTag? travelPace;
 
   @override
   List<Object?> get props => [
