@@ -25,45 +25,44 @@ class User extends Equatable {
   final AccommodationTag? accommodation;
 
   User.fromJson(Map<String, dynamic> json)
-      : id = json['id'],
+      : id = json['userId'],
         name = json['name'],
         bio = json['bio'],
-        interests = json['interests'] != null
-            ? (json['interests'] as List<dynamic>)
+        interests = json['interestTags'] != null
+            ? (json['interestTags'] as List<dynamic>)
                 .map((e) => InterestTag.fromJson(e))
                 .toList()
             : null,
-        personality = json['personality'] != null
-            ? PersonalityTag.fromJson(json['personality'])
+        personality = json['personalityTags'] != null
+            ? PersonalityTag.fromJson(json['personalityTags'])
             : null,
-        travelPreference = json['travelPreference'] != null
-            ? (json['travelPreference'] as List<dynamic>)
+        travelPreference = json['travelPreferenceTags'] != null
+            ? (json['travelPreferenceTags'] as List<dynamic>)
                 .map((e) => TravelPreferenceTag.fromJson(e))
                 .toList()
             : null,
-        travelPace = json['travelPace'] != null
-            ? TravelPaceTag.fromJson(json['travelPace'])
+        travelPace = json['travelPaceTags'] != null
+            ? TravelPaceTag.fromJson(json['travelPaceTags'])
             : null,
-        food = json['food'] != null
-            ? (json['food'] as List<dynamic>)
+        food = json['foodTags'] != null
+            ? (json['foodTags'] as List<dynamic>)
                 .map((e) => FoodTag.fromJson(e))
                 .toList()
             : null,
-        accommodation = json['accommodation'] != null
-            ? AccommodationTag.fromJson(json['accommodation'])
+        accommodation = json['accommodationTags'] != null
+            ? AccommodationTag.fromJson(json['accommodationTags'])
             : null;
 
   Map<String, dynamic> toJson() {
     return {
-      'id': id,
-      'name': name,
+      'userId': id,
       'bio': bio,
-      'interests': interests?.map((e) => e.toJson()).toList(),
-      'personality': personality?.toJson(),
-      'travelPreference': travelPreference?.map((e) => e.toJson()).toList(),
-      'travelPace': travelPace?.toJson(),
-      'food': food?.map((e) => e.toJson()).toList(),
-      'accommodation': accommodation?.toJson(),
+      'interestTags': interests?.map((e) => e.toJson()).toList(),
+      'personalityTags': personality?.toJson(),
+      'travelPreferenceTags': travelPreference?.map((e) => e.toJson()).toList(),
+      'travelPaceTags': travelPace?.toJson(),
+      'foodTags': food?.map((e) => e.toJson()).toList(),
+      'accommodationTags': accommodation?.toJson(),
     };
   }
 
