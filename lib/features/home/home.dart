@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:travelity/features/home/ai_assistant.dart';
+import 'package:travelity/features/schedule/schedule.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -17,7 +18,7 @@ class _HomePageState extends State<HomePage> {
         title: const Text('Home'),
       ),
       body: switch (currentPageIndex) {
-        0 => const Center(child: Text('Schedule page')),
+        0 => const ScheduleBody(),
         1 => const AIAssistantBody(),
         2 => const Center(child: Text('Profile page')),
         _ => const Center(child: Text('Home page')),
