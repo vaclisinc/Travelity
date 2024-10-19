@@ -8,14 +8,19 @@ class AIAssistantBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Expanded(
-          child: SingleChildScrollView(
-              child: LocationPreview(location: mockLocations[0])),
-        ),
-        const PromptField(),
-      ],
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('AI助理'),
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
+                child: LocationPreview(location: mockLocations[0])),
+          ),
+          const PromptField(),
+        ],
+      ),
     );
   }
 }

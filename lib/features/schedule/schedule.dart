@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 import 'package:timelines/timelines.dart';
 import 'package:travelity/core/model/schedule_event_m.dart';
 import 'package:travelity/features/location/location_detail.dart';
@@ -11,29 +10,43 @@ class ScheduleBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      initialIndex: 0,
-      length: allEvents.length,
-      child: Column(
-        children: [
-          TabBar(
-            tabs: List.generate(allEvents.length, (index) {
-              return Tab(
-                text: 'Day ${index + 1}',
-              );
-            }),
-          ),
-          Expanded(
-            child: TabBarView(
-              physics: const NeverScrollableScrollPhysics(),
-              children: List.generate(allEvents.length, (index) {
-                return ScheduleTimeLine(
-                  events: allEvents[index],
-                );
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('推薦行程'),
+      ),
+      body: DefaultTabController(
+        initialIndex: 0,
+        length: allEvents.length,
+        child: Column(
+          children: [
+            TabBar(
+              tabs: List.generate(allEvents.length, (index) {
+                return Tab(
+                    // text: 'Day ${index + 1}',
+                    child: Column(children: [
+                  Text(
+                    'Day ${index + 1}',
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  // Text(allEvents[0].first.startTime)
+                ]));
               }),
             ),
-          ),
-        ],
+            Expanded(
+              child: TabBarView(
+                physics: const NeverScrollableScrollPhysics(),
+                children: List.generate(allEvents.length, (index) {
+                  return ScheduleTimeLine(
+                    events: allEvents[index],
+                  );
+                }),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

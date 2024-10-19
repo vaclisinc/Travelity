@@ -16,9 +16,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home'),
-      ),
       body: switch (currentPageIndex) {
         0 => ScheduleBody(allEvents: mockEvents),
         1 => const AIAssistantBody(),
@@ -29,15 +26,15 @@ class _HomePageState extends State<HomePage> {
         destinations: const [
           NavigationDestination(
             icon: Icon(Icons.schedule),
-            label: 'Schedule',
+            label: '推薦行程',
           ),
           NavigationDestination(
             icon: Icon(Icons.home),
-            label: 'AI Assistant',
+            label: 'AI助理',
           ),
           NavigationDestination(
             icon: Icon(Icons.person),
-            label: 'Profile',
+            label: '偏好設定',
           ),
         ],
         selectedIndex: currentPageIndex,
