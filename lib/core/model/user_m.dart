@@ -10,6 +10,8 @@ class User extends Equatable {
     required this.personality,
     required this.travelPreference,
     required this.travelPace,
+    required this.food,
+    required this.accommodation,
   });
 
   final String? id;
@@ -19,6 +21,8 @@ class User extends Equatable {
   final PersonalityTag? personality;
   final List<TravelPreferenceTag>? travelPreference;
   final TravelPaceTag? travelPace;
+  final List<FoodTag>? food;
+  final AccommodationTag? accommodation;
 
   User.fromJson(Map<String, dynamic> json)
       : id = json['id'],
@@ -39,6 +43,14 @@ class User extends Equatable {
             : null,
         travelPace = json['travelPace'] != null
             ? TravelPaceTag.fromJson(json['travelPace'])
+            : null,
+        food = json['food'] != null
+            ? (json['food'] as List<dynamic>)
+                .map((e) => FoodTag.fromJson(e))
+                .toList()
+            : null,
+        accommodation = json['accommodation'] != null
+            ? AccommodationTag.fromJson(json['accommodation'])
             : null;
 
   @override
@@ -50,5 +62,7 @@ class User extends Equatable {
         personality,
         travelPreference,
         travelPace,
+        food,
+        accommodation,
       ];
 }

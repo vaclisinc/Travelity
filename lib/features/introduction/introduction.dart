@@ -5,7 +5,9 @@ import 'package:travelity/core/services/user_local_source.dart';
 import 'package:travelity/features/home/home.dart';
 import 'package:travelity/features/introduction/bloc/user_setup_bloc.dart';
 import 'package:travelity/features/introduction/setup/bio_setup.dart';
+import 'package:travelity/features/introduction/setup/food_setup.dart';
 import 'package:travelity/features/introduction/setup/interest_setup.dart';
+import 'package:travelity/features/introduction/setup/accommodation_setup.dart';
 import 'package:travelity/features/introduction/setup/personality_setup.dart';
 import 'package:travelity/features/introduction/setup/trave_pace_setup.dart';
 import 'package:travelity/features/introduction/setup/travel_pref_setup.dart';
@@ -17,6 +19,8 @@ List<PageViewModel> pages = [
   PageViewModel(title: '簡單地自我介紹', bodyWidget: const BioSetup()),
   PageViewModel(title: '勾選您的旅遊偏好', bodyWidget: const TravelPrefSetup()),
   PageViewModel(title: '勾選您的旅遊步調', bodyWidget: const TravelPaceSetup()),
+  PageViewModel(title: '勾選您的美食愛好', bodyWidget: const FoodSetup()),
+  PageViewModel(title: '勾選您的住宿偏好', bodyWidget: const AccommodationSetup()),
 ];
 
 class IntroductionPage extends StatelessWidget {

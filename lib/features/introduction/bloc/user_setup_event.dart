@@ -58,3 +58,21 @@ class SaveUser extends UserSetupEvent {
   @override
   List<Object> get props => [];
 }
+
+class SetFood extends UserSetupEvent {
+  const SetFood({required this.food});
+
+  final List<FoodTag> food;
+
+  @override
+  List<Object> get props => [food];
+}
+
+class SetAccommodation extends UserSetupEvent {
+  const SetAccommodation({required this.accommodation});
+
+  final AccommodationTag accommodation;
+
+  @override
+  List<Object> get props => [accommodation];
+}

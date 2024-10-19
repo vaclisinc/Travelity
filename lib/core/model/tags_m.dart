@@ -64,3 +64,25 @@ class TravelPaceTag extends Equatable {
   @override
   List<Object?> get props => [tag];
 }
+
+class FoodTag extends Equatable {
+  const FoodTag({required this.tag});
+
+  final String tag;
+
+  FoodTag.fromJson(Map<String, dynamic> json) : tag = json['tag'];
+
+  @override
+  List<Object?> get props => [tag];
+}
+
+class AccommodationTag extends Equatable {
+  const AccommodationTag({required this.tag});
+
+  final String tag;
+
+  AccommodationTag.fromJson(Map<String, dynamic> json) : tag = json['tag'];
+
+  @override
+  List<Object?> get props => [tag];
+}

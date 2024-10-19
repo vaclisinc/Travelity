@@ -12,13 +12,16 @@ sealed class UserSetupState extends Equatable {
 final class UserSetupInitial extends UserSetupState {
   const UserSetupInitial(
       {super.user = const User(
-          id: null,
-          name: null,
-          bio: null,
-          interests: [],
-          personality: null,
-          travelPreference: [],
-          travelPace: null)});
+        id: null,
+        name: null,
+        bio: null,
+        interests: [],
+        personality: null,
+        travelPreference: [],
+        travelPace: null,
+        food: [],
+        accommodation: null,
+      )});
 
   @override
   List<Object> get props => [user];

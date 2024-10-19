@@ -18,6 +18,8 @@ class UserSetupBloc extends Bloc<UserSetupEvent, UserSetupState> {
     on<SetTravelPreference>(setTravelPreference);
     on<SetTravelPace>(setTravelPace);
     on<SaveUser>(saveUser);
+    on<SetFood>(setFood);
+    on<SetAccommodation>(setAccommodation);
   }
 
   final UserLocalSource userLocalSource;
@@ -29,6 +31,8 @@ class UserSetupBloc extends Bloc<UserSetupEvent, UserSetupState> {
   PersonalityTag? personality;
   List<TravelPreferenceTag> travelPreference = [];
   TravelPaceTag? travelPace;
+  List<FoodTag> food = [];
+  AccommodationTag? accommodation;
 
   Future<void> setInterests(
       SetInterests event, Emitter<UserSetupState> emit) async {
@@ -36,13 +40,16 @@ class UserSetupBloc extends Bloc<UserSetupEvent, UserSetupState> {
     interests = event.interests;
     emit(UserSetupSaved(
         user: User(
-            id: id,
-            name: name,
-            bio: bio,
-            interests: interests,
-            personality: personality,
-            travelPreference: travelPreference,
-            travelPace: travelPace)));
+      id: id,
+      name: name,
+      bio: bio,
+      interests: interests,
+      personality: personality,
+      travelPreference: travelPreference,
+      travelPace: travelPace,
+      food: food,
+      accommodation: accommodation,
+    )));
   }
 
   void setPersonality(SetPersonality event, Emitter<UserSetupState> emit) {
@@ -50,13 +57,16 @@ class UserSetupBloc extends Bloc<UserSetupEvent, UserSetupState> {
     personality = event.personality;
     emit(UserSetupSaved(
         user: User(
-            id: id,
-            name: name,
-            bio: bio,
-            interests: interests,
-            personality: personality,
-            travelPreference: travelPreference,
-            travelPace: travelPace)));
+      id: id,
+      name: name,
+      bio: bio,
+      interests: interests,
+      personality: personality,
+      travelPreference: travelPreference,
+      travelPace: travelPace,
+      food: food,
+      accommodation: accommodation,
+    )));
   }
 
   void setBio(SetBio event, Emitter<UserSetupState> emit) {
@@ -64,13 +74,16 @@ class UserSetupBloc extends Bloc<UserSetupEvent, UserSetupState> {
     bio = event.bio;
     emit(UserSetupSaved(
         user: User(
-            id: id,
-            name: name,
-            bio: bio,
-            interests: interests,
-            personality: personality,
-            travelPreference: travelPreference,
-            travelPace: travelPace)));
+      id: id,
+      name: name,
+      bio: bio,
+      interests: interests,
+      personality: personality,
+      travelPreference: travelPreference,
+      travelPace: travelPace,
+      food: food,
+      accommodation: accommodation,
+    )));
   }
 
   void setTravelPreference(
@@ -79,18 +92,38 @@ class UserSetupBloc extends Bloc<UserSetupEvent, UserSetupState> {
     travelPreference = event.travelPreference;
     emit(UserSetupSaved(
         user: User(
-            id: id,
-            name: name,
-            bio: bio,
-            interests: interests,
-            personality: personality,
-            travelPreference: travelPreference,
-            travelPace: travelPace)));
+      id: id,
+      name: name,
+      bio: bio,
+      interests: interests,
+      personality: personality,
+      travelPreference: travelPreference,
+      travelPace: travelPace,
+      food: food,
+      accommodation: accommodation,
+    )));
   }
 
   void setTravelPace(SetTravelPace event, Emitter<UserSetupState> emit) {
     emit(UserSetupSaving(user: state.user));
     travelPace = event.travelPace;
+    emit(UserSetupSaved(
+        user: User(
+      id: id,
+      name: name,
+      bio: bio,
+      interests: interests,
+      personality: personality,
+      travelPreference: travelPreference,
+      travelPace: travelPace,
+      food: food,
+      accommodation: accommodation,
+    )));
+  }
+
+  Future<void> setFood(SetFood event, Emitter<UserSetupState> emit) async {
+    emit(UserSetupSaving(user: state.user));
+    food = event.food;
     emit(UserSetupSaved(
         user: User(
             id: id,
@@ -99,7 +132,26 @@ class UserSetupBloc extends Bloc<UserSetupEvent, UserSetupState> {
             interests: interests,
             personality: personality,
             travelPreference: travelPreference,
-            travelPace: travelPace)));
+            travelPace: travelPace,
+            food: food,
+            accommodation: accommodation)));
+  }
+
+  Future<void> setAccommodation(
+      SetAccommodation event, Emitter<UserSetupState> emit) async {
+    emit(UserSetupSaving(user: state.user));
+    accommodation = event.accommodation;
+    emit(UserSetupSaved(
+        user: User(
+            id: id,
+            name: name,
+            bio: bio,
+            interests: interests,
+            personality: personality,
+            travelPreference: travelPreference,
+            travelPace: travelPace,
+            food: food,
+            accommodation: accommodation)));
   }
 
   Future<void> saveUser(SaveUser event, Emitter<UserSetupState> emit) async {

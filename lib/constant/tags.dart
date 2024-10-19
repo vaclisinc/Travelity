@@ -38,31 +38,30 @@ const List<TravelPaceTag> availTravelPaceTags = [
 ];
 
 const List<FoodTag> availFoodTags = [
-  "台灣小吃",
-  "義式料理",
-  "日式料理",
-  "拉麵",
-  "咖哩",
-  "韓式料理",
-  "法式料理",
-  "中式料理",
-  "美式漢堡",
-  "海鮮",
-  "素食",
-  "甜點",
-  "燒烤"
+  FoodTag(tag: "台灣小吃"),
+  FoodTag(tag: "義式料理"),
+  FoodTag(tag: "日式料理"),
+  FoodTag(tag: "拉麵"),
+  FoodTag(tag: "咖哩"),
+  FoodTag(tag: "韓式料理"),
+  FoodTag(tag: "法式料理"),
+  FoodTag(tag: "中式料理"),
+  FoodTag(tag: "美式漢堡"),
+  FoodTag(tag: "海鮮"),
+  FoodTag(tag: "素食"),
+  FoodTag(tag: "甜點"),
+  FoodTag(tag: "燒烤"),
 ];
 
 const List<AccommodationTag> availAccommodationTags = [
-  "豪華飯店", 
-  "精品旅館", 
-  "青年旅社", 
-  "民宿", 
-  "度假村", 
-  "公寓", 
-  "膠囊旅館"
+  AccommodationTag(tag: "豪華飯店"),
+  AccommodationTag(tag: "精品旅館"),
+  AccommodationTag(tag: "青年旅社"),
+  AccommodationTag(tag: "民宿"),
+  AccommodationTag(tag: "度假村"),
+  AccommodationTag(tag: "公寓"),
+  AccommodationTag(tag: "膠囊旅館"),
 ];
-
 
 const List<Location> mockLocations = [
   Location(
