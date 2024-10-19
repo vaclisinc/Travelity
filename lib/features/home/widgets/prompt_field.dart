@@ -41,10 +41,8 @@ class MyInputField extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 16.0),
               child: TextField(
                 decoration: InputDecoration(
-                  contentPadding: EdgeInsets.only(top: 10),
                   hintText: 'Type something or click the button...',
                   border: InputBorder.none,
-                  prefixIcon: Icon(Icons.search, color: Colors.grey),
                 ),
               ),
             ),
