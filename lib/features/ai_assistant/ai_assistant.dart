@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travelity/constant/tags.dart';
@@ -37,7 +39,14 @@ class AIAssistantBody extends StatelessWidget {
                 },
               ),
             ),
-            const PromptField(),
+            BlocBuilder<AiAssistantBloc, AiAssistantState>(
+              builder: (context, state) {
+                log('$state');
+                return PromptField(
+                    active: (state is! RecommendationLoading &&
+                        state is! ScheduleLoading));
+              },
+            ),
           ],
         ),
       ),

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travelity/features/ai_assistant/bloc/ai_assistant_bloc.dart';
 
 class PromptField extends StatefulWidget {
-  const PromptField({super.key});
+  const PromptField({super.key, required this.active});
+
+  final bool active;
 
   @override
   State<PromptField> createState() => _PromptFieldState();
@@ -20,14 +21,16 @@ class _PromptFieldState extends State<PromptField> {
       child: Row(
         children: [
           Expanded(
-            child: MyInputField(controller: controller),
+            child: MyInputField(active: widget.active, controller: controller),
           ),
           const SizedBox(width: 10),
-          SendButton(onPressed: () {
-            context
-                .read<AiAssistantBloc>()
-                .add(RequestRecommendation(userPrompt: controller.text));
-          })
+          SendButton(
+              active: widget.active,
+              onPressed: () {
+                context
+                    .read<AiAssistantBloc>()
+                    .add(RequestRecommendation(userPrompt: controller.text));
+              })
         ],
       ),
     );
@@ -38,8 +41,10 @@ class MyInputField extends StatelessWidget {
   const MyInputField({
     super.key,
     required this.controller,
+    this.active = true,
   });
 
+  final bool active;
   final TextEditingController controller;
 
   @override
@@ -57,9 +62,10 @@ class MyInputField extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: TextField(
+                readOnly: !active,
                 controller: controller,
                 decoration: const InputDecoration(
-                  hintText: '請輸入您想規劃什麼行程...',
+                  hintText: '請輸入欲旅行的地點與天數，越詳細越好...',
                   border: InputBorder.none,
                 ),
               ),
@@ -75,8 +81,10 @@ class SendButton extends StatelessWidget {
   const SendButton({
     super.key,
     this.onPressed,
+    this.active = true,
   });
 
+  final bool active;
   final VoidCallback? onPressed;
 
   @override
@@ -91,7 +99,7 @@ class SendButton extends StatelessWidget {
           Icons.send, // Play button icon
           color: Colors.white, // Icon color
         ),
-        onPressed: onPressed,
+        onPressed: active ? onPressed : null,
       ),
     );
   }
