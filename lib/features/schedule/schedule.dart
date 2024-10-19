@@ -1,9 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:timelines/timelines.dart';
 import 'package:travelity/core/model/schedule_event_m.dart';
 
 class ScheduleBody extends StatelessWidget {
-  const ScheduleBody({super.key});
+  const ScheduleBody({super.key, required this.allEvents});
+
+  final List<List<ScheduleEvent>> allEvents;
+
+  @override
+  Widget build(BuildContext context) {
+    return DefaultTabController(
+      initialIndex: 0,
+      length: allEvents.length,
+      child: Column(
+        children: [
+          TabBar(
+            tabs: List.generate(allEvents.length, (index) {
+              return Tab(
+                text: 'Day ${index + 1}',
+              );
+            }),
+          ),
+          Expanded(
+            child: TabBarView(
+              physics: const NeverScrollableScrollPhysics(),
+              children: List.generate(allEvents.length, (index) {
+                return ScheduleTimeLine(
+                  events: allEvents[index],
+                );
+              }),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class ScheduleTimeLine extends StatelessWidget {
+  const ScheduleTimeLine({
+    super.key,
+    required this.events,
+  });
+
+  final List<ScheduleEvent> events;
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +60,9 @@ class ScheduleBody extends StatelessWidget {
         ),
         builder: TimelineTileBuilder.connected(
           connectionDirection: ConnectionDirection.before,
-          itemCount: _events.length,
+          itemCount: events.length,
           contentsBuilder: (context, index) {
-            final event = _events[index];
+            final event = events[index];
             return Padding(
               padding: const EdgeInsets.only(left: 16.0, bottom: 20.0, top: 15),
               child: Column(
@@ -44,7 +85,7 @@ class ScheduleBody extends StatelessWidget {
             );
           },
           indicatorBuilder: (context, index) {
-            final event = _events[index];
+            final event = events[index];
             return DotIndicator(
               size: 30.0,
               color: event.isCurrent ? Colors.blue : Colors.grey,
@@ -64,7 +105,7 @@ class ScheduleBody extends StatelessWidget {
   }
 }
 
-final List<ScheduleEvent> _events = [
+final List<ScheduleEvent> events = [
   const ScheduleEvent(
       id: '1',
       title: '인스타그램',
