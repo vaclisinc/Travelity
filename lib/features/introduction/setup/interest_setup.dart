@@ -17,6 +17,7 @@ class _InterestSetupState extends State<InterestSetup> {
   Widget build(BuildContext context) {
     return BlocBuilder<UserSetupBloc, UserSetupState>(
       builder: (context, state) {
+        selectedTags = List.from(state.user.interests ?? []);
         return Wrap(
             spacing: 10,
             children: availInterestTags

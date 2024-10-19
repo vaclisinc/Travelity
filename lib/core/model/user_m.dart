@@ -53,6 +53,20 @@ class User extends Equatable {
             ? AccommodationTag.fromJson(json['accommodation'])
             : null;
 
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'bio': bio,
+      'interests': interests?.map((e) => e.toJson()).toList(),
+      'personality': personality?.toJson(),
+      'travelPreference': travelPreference?.map((e) => e.toJson()).toList(),
+      'travelPace': travelPace?.toJson(),
+      'food': food?.map((e) => e.toJson()).toList(),
+      'accommodation': accommodation?.toJson(),
+    };
+  }
+
   @override
   List<Object?> get props => [
         id,
