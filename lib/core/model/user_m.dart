@@ -30,39 +30,39 @@ class User extends Equatable {
         bio = json['bio'],
         interests = json['interestTags'] != null
             ? (json['interestTags'] as List<dynamic>)
-                .map((e) => InterestTag.fromJson(e))
+                .map((e) => InterestTag(tag: e))
                 .toList()
             : null,
         personality = json['personalityTags'] != null
-            ? PersonalityTag.fromJson(json['personalityTags'])
+            ? PersonalityTag(tag: json['personalityTags'])
             : null,
         travelPreference = json['travelPreferenceTags'] != null
             ? (json['travelPreferenceTags'] as List<dynamic>)
-                .map((e) => TravelPreferenceTag.fromJson(e))
+                .map((e) => TravelPreferenceTag(tag: e))
                 .toList()
             : null,
         travelPace = json['travelPaceTags'] != null
-            ? TravelPaceTag.fromJson(json['travelPaceTags'])
+            ? TravelPaceTag(tag: json['travelPaceTags'])
             : null,
         food = json['foodTags'] != null
             ? (json['foodTags'] as List<dynamic>)
-                .map((e) => FoodTag.fromJson(e))
+                .map((e) => FoodTag(tag: e))
                 .toList()
             : null,
         accommodation = json['accommodationTags'] != null
-            ? AccommodationTag.fromJson(json['accommodationTags'])
+            ? AccommodationTag(tag: json['accommodationTags'])
             : null;
 
   Map<String, dynamic> toJson() {
     return {
       'userId': id,
       'bio': bio,
-      'interestTags': interests?.map((e) => e.toJson()).toList(),
-      'personalityTags': personality?.toJson(),
-      'travelPreferenceTags': travelPreference?.map((e) => e.toJson()).toList(),
-      'travelPaceTags': travelPace?.toJson(),
-      'foodTags': food?.map((e) => e.toJson()).toList(),
-      'accommodationTags': accommodation?.toJson(),
+      'interestTags': interests?.map((e) => e.tag).toList(),
+      'personalityTags': personality?.tag,
+      'travelPreferenceTags': travelPreference?.map((e) => e.tag).toList(),
+      'travelPaceTags': travelPace?.tag,
+      'foodTags': food?.map((e) => e.tag).toList(),
+      'accommodationTags': accommodation?.tag,
     };
   }
 

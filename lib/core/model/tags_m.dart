@@ -7,9 +7,6 @@ class InterestTag extends Equatable {
 
   final String tag;
 
-  InterestTag.fromJson(Map<String, dynamic> json) : tag = json['tag'];
-  String toJson() => tag;
-
   @override
   List<Object?> get props => [tag];
 }
@@ -20,9 +17,6 @@ class PersonalityTag extends Equatable {
   });
 
   final String tag;
-
-  PersonalityTag.fromJson(Map<String, dynamic> json) : tag = json['tag'];
-  String toJson() => tag;
 
   @override
   List<Object?> get props => [tag];
@@ -35,9 +29,6 @@ class BioField extends Equatable {
 
   final String field;
 
-  BioField.fromJson(Map<String, dynamic> json) : field = json['field'];
-  String toJson() => field;
-
   @override
   List<Object?> get props => [field];
 }
@@ -48,9 +39,6 @@ class TravelPreferenceTag extends Equatable {
   });
 
   final String tag;
-
-  TravelPreferenceTag.fromJson(Map<String, dynamic> json) : tag = json['tag'];
-  String toJson() => tag;
 
   @override
   List<Object?> get props => [tag];
@@ -63,9 +51,6 @@ class TravelPaceTag extends Equatable {
 
   final String tag;
 
-  TravelPaceTag.fromJson(Map<String, dynamic> json) : tag = json['tag'];
-  String toJson() => tag;
-
   @override
   List<Object?> get props => [tag];
 }
@@ -75,9 +60,6 @@ class FoodTag extends Equatable {
 
   final String tag;
 
-  FoodTag.fromJson(Map<String, dynamic> json) : tag = json['tag'];
-  String toJson() => tag;
-
   @override
   List<Object?> get props => [tag];
 }
@@ -86,9 +68,6 @@ class AccommodationTag extends Equatable {
   const AccommodationTag({required this.tag});
 
   final String tag;
-
-  AccommodationTag.fromJson(Map<String, dynamic> json) : tag = json['tag'];
-  String toJson() => tag;
 
   @override
   List<Object?> get props => [tag];
