@@ -20,6 +20,17 @@ final class RecommendationLoaded extends AiAssistantState {
   List<Object> get props => [locations];
 }
 
+final class ScheduleLoading extends AiAssistantState {}
+
+final class ScheduleLoaded extends AiAssistantState {
+  const ScheduleLoaded({required this.schedules});
+
+  final List<List<ScheduleEvent>> schedules;
+
+  @override
+  List<Object> get props => [schedules];
+}
+
 final class AiAssistantError extends AiAssistantState {
   const AiAssistantError({required this.error});
 

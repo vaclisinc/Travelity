@@ -15,3 +15,10 @@ class RequestRecommendation extends AiAssistantEvent {
   @override
   List<Object> get props => [userPrompt];
 }
+
+class RequestSchedule extends AiAssistantEvent {
+  const RequestSchedule();
+
+  @override
+  List<Object> get props => [];
+}

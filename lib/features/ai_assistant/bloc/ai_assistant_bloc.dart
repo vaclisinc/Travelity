@@ -5,6 +5,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travelity/constant/tags.dart';
 import 'package:travelity/core/model/location_m.dart';
+import 'package:travelity/core/model/schedule_event_m.dart';
 import 'package:travelity/core/model/user_m.dart';
 import 'package:travelity/core/services/user_local_source.dart';
 
@@ -40,5 +41,12 @@ class AiAssistantBloc extends Bloc<AiAssistantEvent, AiAssistantState> {
     // } else {
     //   emit(AiAssistantError(error: response.data));
     // }
+  }
+
+  Future<void> onRequestSchedule(
+      RequestSchedule event, Emitter<AiAssistantState> emit) async {
+    emit(ScheduleLoading());
+    await Future.delayed(const Duration(seconds: 2));
+    emit(ScheduleLoaded(schedules: mockEvents));
   }
 }
