@@ -21,4 +21,8 @@ class UserLocalSource {
     log('$userJson is ${userJson.runtimeType}');
     return User.fromJson(jsonDecode(userJson));
   }
+
+  Future<void> deleteUser() async {
+    await sharedPreferences.remove('user');
+  }
 }
