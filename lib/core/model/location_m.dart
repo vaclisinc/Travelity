@@ -17,6 +17,15 @@ class Location extends Equatable {
     required this.tags,
   });
 
+  factory Location.fromJson(Map<String, dynamic> json) => Location(
+        id: json['id'],
+        name: json['name'],
+        description: json['description'],
+        imageUrl: json['imageUrl'],
+        mapUrl: json['mapUrl'],
+        tags: json['tags'],
+      );
+
   @override
   List<Object?> get props => [id, name, description, imageUrl, mapUrl, tags];
 }

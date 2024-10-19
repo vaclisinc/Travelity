@@ -1,19 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:travelity/features/ai_assistant/bloc/ai_assistant_bloc.dart';
 
-class PromptField extends StatelessWidget {
+class PromptField extends StatefulWidget {
   const PromptField({super.key});
 
   @override
+  State<PromptField> createState() => _PromptFieldState();
+}
+
+class _PromptFieldState extends State<PromptField> {
+  TextEditingController controller = TextEditingController();
+
+  @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.all(16.0),
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
       child: Row(
         children: [
           Expanded(
-            child: MyInputField(),
+            child: MyInputField(controller: controller),
           ),
-          SizedBox(width: 10),
-          SendButton(),
+          const SizedBox(width: 10),
+          SendButton(onPressed: () {
+            context
+                .read<AiAssistantBloc>()
+                .add(RequestRecommendation(userPrompt: controller.text));
+          })
         ],
       ),
     );
@@ -23,7 +37,10 @@ class PromptField extends StatelessWidget {
 class MyInputField extends StatelessWidget {
   const MyInputField({
     super.key,
+    required this.controller,
   });
+
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -34,14 +51,15 @@ class MyInputField extends StatelessWidget {
         ),
         borderRadius: BorderRadius.circular(30.0), // Rounded corners
       ),
-      child: const Row(
+      child: Row(
         children: [
           Expanded(
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.0),
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: TextField(
-                decoration: InputDecoration(
-                  hintText: 'Type something or click the button...',
+                controller: controller,
+                decoration: const InputDecoration(
+                  hintText: '請輸入您想規劃什麼行程...',
                   border: InputBorder.none,
                 ),
               ),
@@ -56,7 +74,10 @@ class MyInputField extends StatelessWidget {
 class SendButton extends StatelessWidget {
   const SendButton({
     super.key,
+    this.onPressed,
   });
+
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -70,9 +91,7 @@ class SendButton extends StatelessWidget {
           Icons.send, // Play button icon
           color: Colors.white, // Icon color
         ),
-        onPressed: () {
-          // Add your action here
-        },
+        onPressed: onPressed,
       ),
     );
   }
