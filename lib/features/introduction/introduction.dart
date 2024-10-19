@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:travelity/core/services/user_local_source.dart';
 import 'package:travelity/features/home/home.dart';
 import 'package:travelity/features/introduction/bloc/user_setup_bloc.dart';
 import 'package:travelity/features/introduction/setup/bio_setup.dart';
@@ -8,6 +9,7 @@ import 'package:travelity/features/introduction/setup/interest_setup.dart';
 import 'package:travelity/features/introduction/setup/personality_setup.dart';
 import 'package:travelity/features/introduction/setup/trave_pace_setup.dart';
 import 'package:travelity/features/introduction/setup/travel_pref_setup.dart';
+import 'package:travelity/get_it.dart';
 
 List<PageViewModel> pages = [
   PageViewModel(title: '勾選您的興趣', bodyWidget: const InterestSetup()),
@@ -22,7 +24,7 @@ class IntroductionPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    UserSetupBloc _bloc = UserSetupBloc();
+    UserSetupBloc _bloc = UserSetupBloc(sl());
 
     return Scaffold(
       appBar: AppBar(
@@ -31,17 +33,19 @@ class IntroductionPage extends StatelessWidget {
       body: BlocProvider<UserSetupBloc>(
         create: (context) => _bloc,
         child: IntroductionScreen(
-          pages: pages,
-          back: const Text('Back'),
-          done: const Text('Done'),
-          next: const Text('Next'),
-          showBackButton: true,
-          onDone: () => Navigator.of(context).pushReplacement(
-            MaterialPageRoute(
-              builder: (context) => const HomePage(),
-            ),
-          ),
-        ),
+            pages: pages,
+            back: const Text('Back'),
+            done: const Text('Done'),
+            next: const Text('Next'),
+            showBackButton: true,
+            onDone: () {
+              _bloc.add(const SaveUser());
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(
+                  builder: (context) => const HomePage(),
+                ),
+              );
+            }),
       ),
     );
   }

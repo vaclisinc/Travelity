@@ -7,6 +7,8 @@ class InterestTag extends Equatable {
 
   final String tag;
 
+  InterestTag.fromJson(Map<String, dynamic> json) : tag = json['tag'];
+
   @override
   List<Object?> get props => [tag];
 }
@@ -17,6 +19,8 @@ class PersonalityTag extends Equatable {
   });
 
   final String tag;
+
+  PersonalityTag.fromJson(Map<String, dynamic> json) : tag = json['tag'];
 
   @override
   List<Object?> get props => [tag];
@@ -29,6 +33,8 @@ class BioField extends Equatable {
 
   final String field;
 
+  BioField.fromJson(Map<String, dynamic> json) : field = json['field'];
+
   @override
   List<Object?> get props => [field];
 }
@@ -40,6 +46,8 @@ class TravelPreferenceTag extends Equatable {
 
   final String tag;
 
+  TravelPreferenceTag.fromJson(Map<String, dynamic> json) : tag = json['tag'];
+
   @override
   List<Object?> get props => [tag];
 }
@@ -50,6 +58,8 @@ class TravelPaceTag extends Equatable {
   });
 
   final String tag;
+
+  TravelPaceTag.fromJson(Map<String, dynamic> json) : tag = json['tag'];
 
   @override
   List<Object?> get props => [tag];

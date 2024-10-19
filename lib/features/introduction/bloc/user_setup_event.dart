@@ -51,3 +51,10 @@ class SetTravelPace extends UserSetupEvent {
   @override
   List<Object> get props => [travelPace];
 }
+
+class SaveUser extends UserSetupEvent {
+  const SaveUser();
+
+  @override
+  List<Object> get props => [];
+}

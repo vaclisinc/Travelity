@@ -1,21 +1,26 @@
+import 'dart:async';
 import 'dart:developer';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travelity/core/model/tags_m.dart';
 import 'package:travelity/core/model/user_m.dart';
+import 'package:travelity/core/services/user_local_source.dart';
 
 part 'user_setup_event.dart';
 part 'user_setup_state.dart';
 
 class UserSetupBloc extends Bloc<UserSetupEvent, UserSetupState> {
-  UserSetupBloc() : super(const UserSetupInitial()) {
+  UserSetupBloc(this.userLocalSource) : super(const UserSetupInitial()) {
     on<SetInterests>(setInterests);
     on<SetPersonality>(setPersonality);
     on<SetBio>(setBio);
     on<SetTravelPreference>(setTravelPreference);
     on<SetTravelPace>(setTravelPace);
+    on<SaveUser>(saveUser);
   }
+
+  final UserLocalSource userLocalSource;
 
   String? id;
   String? name;
@@ -95,5 +100,9 @@ class UserSetupBloc extends Bloc<UserSetupEvent, UserSetupState> {
             personality: personality,
             travelPreference: travelPreference,
             travelPace: travelPace)));
+  }
+
+  Future<void> saveUser(SaveUser event, Emitter<UserSetupState> emit) async {
+    userLocalSource.saveUser(state.user);
   }
 }

@@ -20,6 +20,27 @@ class User extends Equatable {
   final List<TravelPreferenceTag>? travelPreference;
   final TravelPaceTag? travelPace;
 
+  User.fromJson(Map<String, dynamic> json)
+      : id = json['id'],
+        name = json['name'],
+        bio = json['bio'],
+        interests = json['interests'] != null
+            ? (json['interests'] as List<dynamic>)
+                .map((e) => InterestTag.fromJson(e))
+                .toList()
+            : null,
+        personality = json['personality'] != null
+            ? PersonalityTag.fromJson(json['personality'])
+            : null,
+        travelPreference = json['travelPreference'] != null
+            ? (json['travelPreference'] as List<dynamic>)
+                .map((e) => TravelPreferenceTag.fromJson(e))
+                .toList()
+            : null,
+        travelPace = json['travelPace'] != null
+            ? TravelPaceTag.fromJson(json['travelPace'])
+            : null;
+
   @override
   List<Object?> get props => [
         id,
