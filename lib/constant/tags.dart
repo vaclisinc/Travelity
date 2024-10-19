@@ -1,44 +1,73 @@
+import 'package:travelity/core/model/tags_m.dart';
 import 'package:travelity/core/model/location_m.dart';
 import 'package:travelity/core/model/schedule_event_m.dart';
-import 'package:travelity/core/model/tags_m.dart';
 
 const List<InterestTag> availInterestTags = [
-  InterestTag(tag: 'Travel'),
-  InterestTag(tag: 'Food'),
-  InterestTag(tag: 'Music'),
-  InterestTag(tag: 'Sports'),
-  InterestTag(tag: 'Nature'),
-  InterestTag(tag: 'Art'),
-  InterestTag(tag: 'History'),
-  InterestTag(tag: 'Culture'),
-  InterestTag(tag: 'Business'),
-  InterestTag(tag: 'Shopping')
+  InterestTag(tag: '攝影'),
+  InterestTag(tag: '跑咖'),
+  InterestTag(tag: '甜點'),
+  InterestTag(tag: '散步'),
+  InterestTag(tag: '看海'),
+  InterestTag(tag: '購物'),
+  InterestTag(tag: '電影'),
+  InterestTag(tag: '音樂'),
 ];
 
 const List<PersonalityTag> availPersonalityTags = [
-  PersonalityTag(tag: 'Introvert'),
-  PersonalityTag(tag: 'Extrovert'),
+  PersonalityTag(tag: '內向'),
+  PersonalityTag(tag: '外向'),
 ];
 
 const List<TravelPreferenceTag> availTravelPreferenceTags = [
-  TravelPreferenceTag(tag: 'Budget'),
-  TravelPreferenceTag(tag: 'Comfort'),
-  TravelPreferenceTag(tag: 'Convenience'),
-  TravelPreferenceTag(tag: 'Safety'),
-  TravelPreferenceTag(tag: 'Family Friendly'),
-  TravelPreferenceTag(tag: 'Adventure'),
+  TravelPreferenceTag(tag: '冒險'),
+  TravelPreferenceTag(tag: '文青'),
+  TravelPreferenceTag(tag: '夜生活'),
+  TravelPreferenceTag(tag: '歷史探索'),
+  TravelPreferenceTag(tag: '戶外運動'),
+  TravelPreferenceTag(tag: '藝術欣賞'),
+  TravelPreferenceTag(tag: '極限運動'),
+  TravelPreferenceTag(tag: '美食饗宴'),
+  TravelPreferenceTag(tag: '自然探索'),
+  TravelPreferenceTag(tag: '親子友善'),
 ];
 
 const List<TravelPaceTag> availTravelPaceTags = [
-  TravelPaceTag(tag: 'Slow'),
-  TravelPaceTag(tag: 'Medium'),
-  TravelPaceTag(tag: 'Fast'),
+  TravelPaceTag(tag: '步調慢'),
+  TravelPaceTag(tag: '適中'),
+  TravelPaceTag(tag: '行程緊湊'),
 ];
+
+const List<FoodTag> availFoodTags = [
+  "台灣小吃",
+  "義式料理",
+  "日式料理",
+  "拉麵",
+  "咖哩",
+  "韓式料理",
+  "法式料理",
+  "中式料理",
+  "美式漢堡",
+  "海鮮",
+  "素食",
+  "甜點",
+  "燒烤"
+];
+
+const List<AccommodationTag> availAccommodationTags = [
+  "豪華飯店", 
+  "精品旅館", 
+  "青年旅社", 
+  "民宿", 
+  "度假村", 
+  "公寓", 
+  "膠囊旅館"
+];
+
 
 const List<Location> mockLocations = [
   Location(
       id: '1',
-      name: '新竹城隍妙',
+      name: '新竹城隍廟',
       description: 'Location 1 description',
       imageUrl:
           'https://lh5.googleusercontent.com/p/AF1QipN2XLoDKctZTclJbIDyUpfnsve9yoBhNJVbJrKH=s773-k-no',
