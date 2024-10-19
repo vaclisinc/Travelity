@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:travelity/core/model/location_m.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class LocationDetailPage extends StatelessWidget {
   const LocationDetailPage({super.key, required this.location});
@@ -10,10 +11,11 @@ class LocationDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
+        alignment: Alignment.topCenter,
         children: [
           // Background Image with a Text Overlay
           SizedBox(
-            height: 400,
+            height: 600,
             child: Stack(
               fit: StackFit.expand,
               children: [
@@ -56,8 +58,8 @@ class LocationDetailPage extends StatelessWidget {
 
           // Bottom Sheet with Details
           DraggableScrollableSheet(
-            initialChildSize: 0.4,
-            minChildSize: 0.4,
+            initialChildSize: 0.3,
+            minChildSize: 0.3,
             maxChildSize: 0.7,
             builder: (context, scrollController) {
               return Container(
@@ -90,7 +92,18 @@ class LocationDetailPage extends StatelessWidget {
                           style:
                               const TextStyle(fontSize: 16, color: Colors.grey),
                         ),
-                        const SizedBox(height: 20),
+                        const SizedBox(height: 10),
+
+                        Wrap(
+                          spacing: 10,
+                          children: location.tags
+                              .map((e) => ChoiceChip(
+                                    label: Text(e),
+                                    selected: true,
+                                    showCheckmark: false,
+                                  ))
+                              .toList(),
+                        ),
 
                         // // Rating Row
                         // Row(
@@ -134,35 +147,40 @@ class LocationDetailPage extends StatelessWidget {
                         //   ],
                         // ),
                         const SizedBox(height: 30),
-
-                        // Navigation Button
-                        Center(
-                          child: ElevatedButton(
-                            onPressed: () {
-                              // Navigate to another screen or action
-                            },
-                            style: ElevatedButton.styleFrom(
-                              padding: const EdgeInsets.symmetric(
-                                vertical: 16.0,
-                                horizontal: 24.0,
-                              ),
-                              backgroundColor: Colors.blue,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(30.0),
-                              ),
-                            ),
-                            child: const Text(
-                              'Click me to navigate...',
-                              style: TextStyle(fontSize: 16),
-                            ),
-                          ),
-                        ),
                       ],
                     ),
                   ),
                 ),
               );
             },
+          ),
+          // Navigation Button
+          Positioned(
+            bottom: 50,
+            child: ElevatedButton(
+              onPressed: () async {
+                if (await canLaunchUrl(Uri.parse(location.mapUrl))) {
+                  launchUrl(Uri.parse(location.mapUrl));
+                }
+              },
+              style: ElevatedButton.styleFrom(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 16.0,
+                  horizontal: 24.0,
+                ),
+                backgroundColor: Colors.blue,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30.0),
+                ),
+              ),
+              child: const Text(
+                '點我導航...',
+                style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold),
+              ),
+            ),
           ),
         ],
       ),
