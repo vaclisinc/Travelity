@@ -16,12 +16,14 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: switch (currentPageIndex) {
-        0 => ScheduleBody(allEvents: mockEvents),
-        1 => const AIAssistantBody(),
-        2 => const ProfileBody(),
-        _ => const Center(child: Text('Home page')),
-      },
+      body: IndexedStack(
+        index: currentPageIndex,
+        children: [
+          ScheduleBody(allEvents: mockEvents),
+          const AIAssistantBody(),
+          const ProfileBody(),
+        ],
+      ),
       bottomNavigationBar: NavigationBar(
         destinations: const [
           NavigationDestination(
