@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travelity/constant/tags.dart';
 import 'package:travelity/core/model/tags_m.dart';
 import 'package:travelity/features/introduction/bloc/user_setup_bloc.dart';
+import 'package:travelity/theme.dart';
 
 class PersonalitySetup extends StatefulWidget {
   const PersonalitySetup({super.key});
@@ -20,6 +21,7 @@ class _PersonalitySetupState extends State<PersonalitySetup> {
             spacing: 10,
             children: availPersonalityTags
                 .map((e) => ChoiceChip(
+                      selectedColor: theme().primaryColorLight,
                       showCheckmark: false,
                       label: Text(e.tag),
                       selected: state.user.personality == e,

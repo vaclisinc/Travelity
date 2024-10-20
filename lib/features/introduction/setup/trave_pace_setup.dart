@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travelity/constant/tags.dart';
 import 'package:travelity/features/introduction/bloc/user_setup_bloc.dart';
+import 'package:travelity/theme.dart';
 
 class TravelPaceSetup extends StatefulWidget {
   const TravelPaceSetup({super.key});
@@ -19,6 +20,7 @@ class _TravelPaceSetupState extends State<TravelPaceSetup> {
             spacing: 10,
             children: availTravelPaceTags
                 .map((e) => ChoiceChip(
+                      selectedColor: theme().primaryColorLight,
                       showCheckmark: false,
                       label: Text(e.tag),
                       selected: state.user.travelPace == e,

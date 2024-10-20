@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travelity/features/ai_assistant/bloc/ai_assistant_bloc.dart';
+import 'package:travelity/theme.dart';
 
 class PromptField extends StatefulWidget {
   const PromptField({super.key, required this.active});
@@ -90,8 +91,8 @@ class SendButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-        color: Colors.blue, // Background color for the circular button
+      decoration: BoxDecoration(
+        color: theme().primaryColor,
         shape: BoxShape.circle,
       ),
       child: IconButton(

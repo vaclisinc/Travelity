@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travelity/features/introduction/bloc/user_setup_bloc.dart';
+import 'package:travelity/theme.dart';
 
 class BioSetup extends StatefulWidget {
   const BioSetup({super.key});
@@ -18,8 +19,10 @@ class _BioSetupState extends State<BioSetup> {
       builder: (context, state) {
         controller.text = state.user.bio ?? '';
         return TextField(
+          cursorColor: theme().primaryColor,
           controller: controller,
-          decoration: const InputDecoration(
+          decoration: InputDecoration(
+            fillColor: theme().primaryColor,
             hintText: '請輸入您的簡單介紹',
           ),
           onChanged: (value) {

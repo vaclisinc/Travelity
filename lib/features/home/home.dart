@@ -33,6 +33,7 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       bottomNavigationBar: NavigationBar(
+        indicatorColor: theme().primaryColor,
         destinations: const [
           NavigationDestination(
             icon: Icon(Icons.schedule),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:travelity/features/home/home.dart';
 import 'package:travelity/features/introduction/introduction.dart';
 import 'package:travelity/get_it.dart';
+import 'package:travelity/theme.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,11 +19,9 @@ class MyApp extends StatelessWidget {
     WidgetsFlutterBinding.ensureInitialized();
     return MaterialApp(
       title: 'Travelity',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: theme(),
       home: const IntroductionPage(),
+      // home: const HomePage(),
     );
   }
 }

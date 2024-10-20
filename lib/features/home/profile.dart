@@ -9,6 +9,7 @@ import 'package:travelity/features/introduction/setup/personality_setup.dart';
 import 'package:travelity/features/introduction/setup/trave_pace_setup.dart';
 import 'package:travelity/features/introduction/setup/travel_pref_setup.dart';
 import 'package:travelity/get_it.dart';
+import 'package:travelity/theme.dart';
 
 class ProfileBody extends StatelessWidget {
   const ProfileBody({super.key});
@@ -53,6 +54,7 @@ class ProfileBody extends StatelessWidget {
                   ),
                 ),
                 floatingActionButton: FloatingActionButton(
+                  backgroundColor: theme().primaryColor,
                   onPressed: () {
                     context.read<UserSetupBloc>().add(const SaveUser());
                   },

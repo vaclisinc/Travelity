@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travelity/constant/tags.dart';
 import 'package:travelity/core/model/tags_m.dart';
 import 'package:travelity/features/introduction/bloc/user_setup_bloc.dart';
+import 'package:travelity/theme.dart';
 
 class TravelPrefSetup extends StatefulWidget {
   const TravelPrefSetup({super.key});
@@ -22,6 +23,7 @@ class _TravelPrefSetupState extends State<TravelPrefSetup> {
             spacing: 10,
             children: availTravelPreferenceTags
                 .map((e) => ChoiceChip(
+                      selectedColor: theme().primaryColorLight,
                       showCheckmark: false,
                       label: Text(e.tag),
                       selected: state.user.travelPreference!.contains(e),

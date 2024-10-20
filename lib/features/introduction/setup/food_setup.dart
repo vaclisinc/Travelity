@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travelity/constant/tags.dart';
 import 'package:travelity/core/model/tags_m.dart';
 import 'package:travelity/features/introduction/bloc/user_setup_bloc.dart';
+import 'package:travelity/theme.dart';
 
 class FoodSetup extends StatefulWidget {
   const FoodSetup({super.key});
@@ -22,6 +23,7 @@ class _FoodSetupState extends State<FoodSetup> {
             spacing: 10,
             children: availFoodTags
                 .map((e) => ChoiceChip(
+                      selectedColor: theme().primaryColorLight,
                       showCheckmark: false,
                       label: Text(e.tag),
                       selected: state.user.food!.contains(e),

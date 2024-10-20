@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travelity/constant/tags.dart';
 import 'package:travelity/features/introduction/bloc/user_setup_bloc.dart';
+import 'package:travelity/theme.dart';
 
 class AccommodationSetup extends StatefulWidget {
   const AccommodationSetup({super.key});
@@ -19,6 +20,7 @@ class _AccommodationSetupState extends State<AccommodationSetup> {
             spacing: 10,
             children: availAccommodationTags
                 .map((e) => ChoiceChip(
+                      selectedColor: theme().primaryColorLight,
                       showCheckmark: false,
                       label: Text(e.tag),
                       selected: state.user.accommodation == e,

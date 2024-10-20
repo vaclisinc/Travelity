@@ -12,6 +12,7 @@ import 'package:travelity/features/introduction/setup/personality_setup.dart';
 import 'package:travelity/features/introduction/setup/trave_pace_setup.dart';
 import 'package:travelity/features/introduction/setup/travel_pref_setup.dart';
 import 'package:travelity/get_it.dart';
+import 'package:travelity/theme.dart';
 
 List<PageViewModel> pages = [
   PageViewModel(title: '勾選您的興趣', bodyWidget: const InterestSetup()),
@@ -32,16 +33,26 @@ class IntroductionPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Introduction'),
+        title: const Text('初始設定'),
       ),
       body: BlocProvider<UserSetupBloc>(
         create: (context) => _bloc,
         child: IntroductionScreen(
             pages: pages,
-            back: const Text('Back'),
-            done: const Text('Done'),
-            next: const Text('Next'),
-            showBackButton: true,
+            back: Text(
+              '上一步',
+              style: TextStyle(color: theme().primaryColor),
+            ),
+            done: Text(
+              '完成',
+              style: TextStyle(color: theme().primaryColor),
+            ),
+            next: Text(
+              '下一步',
+              style: TextStyle(color: theme().primaryColor),
+            ),
+            // showBackButton: true,
+            isProgress: false,
             onDone: () {
               _bloc.add(const SaveUser());
               Navigator.of(context).pushReplacement(

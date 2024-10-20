@@ -13,14 +13,14 @@ class ScheduleBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<AiAssistantBloc>(
       create: (context) => sl(),
-      child: BlocBuilder<AiAssistantBloc, AiAssistantState>(
-        builder: (context, state) {
-          if (state is ScheduleLoaded) {
-            return Scaffold(
-              appBar: AppBar(
-                title: const Text('推薦行程'),
-              ),
-              body: DefaultTabController(
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('推薦行程'),
+        ),
+        body: BlocBuilder<AiAssistantBloc, AiAssistantState>(
+          builder: (context, state) {
+            if (state is ScheduleLoaded) {
+              return DefaultTabController(
                 initialIndex: 0,
                 length: state.schedules.length,
                 child: Column(
@@ -54,11 +54,11 @@ class ScheduleBody extends StatelessWidget {
                     ),
                   ],
                 ),
-              ),
-            );
-          }
-          return const Center(child: Text('目前尚無推薦行程'));
-        },
+              );
+            }
+            return const Center(child: Text('目前尚無推薦行程'));
+          },
+        ),
       ),
     );
   }
