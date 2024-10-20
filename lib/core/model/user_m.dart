@@ -55,7 +55,7 @@ class User extends Equatable {
 
   Map<String, dynamic> toJson() {
     return {
-      'userId': id,
+      'userId': 'test01',
       'bio': bio,
       'interestTags': interests?.map((e) => e.tag).toList(),
       'personalityTags': personality?.tag,

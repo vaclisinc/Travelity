@@ -116,7 +116,7 @@ class ScheduleTimeLine extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      event.location.description,
+                      event.location.reason,
                       style: const TextStyle(color: Colors.grey),
                     ),
                   ],

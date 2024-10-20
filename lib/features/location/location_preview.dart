@@ -23,6 +23,7 @@ class LocationPreview extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Row(
+            mainAxisSize: MainAxisSize.min,
             children: [
               Image.network(
                 width: 150,
@@ -31,22 +32,24 @@ class LocationPreview extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
               const SizedBox(width: 16),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    location.name,
-                    style: const TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      location.name,
+                      style: const TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 10),
-                  Text(
-                    location.description,
-                    style: const TextStyle(fontSize: 16, color: Colors.grey),
-                  ),
-                ],
+                    const SizedBox(height: 10),
+                    Text(
+                      location.reason,
+                      style: const TextStyle(fontSize: 16, color: Colors.grey),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

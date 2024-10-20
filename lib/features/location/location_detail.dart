@@ -88,7 +88,7 @@ class LocationDetailPage extends StatelessWidget {
                         ),
                         const SizedBox(height: 10),
                         Text(
-                          location.description,
+                          location.reason,
                           style:
                               const TextStyle(fontSize: 16, color: Colors.grey),
                         ),
@@ -96,13 +96,13 @@ class LocationDetailPage extends StatelessWidget {
 
                         Wrap(
                           spacing: 10,
-                          children: location.tags
-                              .map((e) => ChoiceChip(
-                                    label: Text(e),
-                                    selected: true,
-                                    showCheckmark: false,
-                                  ))
-                              .toList(),
+                          children: [
+                            ...?location.tags?.map((e) => ChoiceChip(
+                                  label: Text(e),
+                                  selected: true,
+                                  showCheckmark: false,
+                                ))
+                          ],
                         ),
 
                         // // Rating Row

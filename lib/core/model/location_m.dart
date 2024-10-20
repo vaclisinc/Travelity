@@ -3,29 +3,29 @@ import 'package:equatable/equatable.dart';
 class Location extends Equatable {
   final String id;
   final String name;
-  final String description;
+  final String reason;
   final String imageUrl;
   final String mapUrl;
-  final List<String> tags;
+  final List<String>? tags;
 
   const Location({
     required this.id,
     required this.name,
-    required this.description,
+    required this.reason,
     required this.imageUrl,
     required this.mapUrl,
     required this.tags,
   });
 
   factory Location.fromJson(Map<String, dynamic> json) => Location(
-        id: json['id'],
+        id: json['id'] ?? '',
         name: json['name'],
-        description: json['description'],
-        imageUrl: json['imageUrl'],
-        mapUrl: json['mapUrl'],
-        tags: json['tags'],
+        reason: json['reason'],
+        imageUrl: json['photos'],
+        mapUrl: json['maps_url'],
+        tags: List<String>.from(json['label'] ?? []),
       );
 
   @override
-  List<Object?> get props => [id, name, description, imageUrl, mapUrl, tags];
+  List<Object?> get props => [id, name, reason, imageUrl, mapUrl, tags];
 }

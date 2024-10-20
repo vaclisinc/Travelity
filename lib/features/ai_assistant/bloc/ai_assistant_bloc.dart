@@ -1,11 +1,15 @@
 import 'dart:async';
+import 'dart:convert';
+import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:travelity/constant/api.dart';
 import 'package:travelity/constant/tags.dart';
 import 'package:travelity/core/model/location_m.dart';
 import 'package:travelity/core/model/schedule_event_m.dart';
+import 'package:travelity/core/model/user_m.dart';
 import 'package:travelity/core/services/user_local_source.dart';
 
 part 'ai_assistant_event.dart';
@@ -41,54 +45,75 @@ class AiAssistantBloc extends Bloc<AiAssistantEvent, AiAssistantState> {
       RequestSceneryRecommendation event,
       Emitter<AiAssistantState> emit) async {
     emit(const RecommendationLoading());
-    await Future.delayed(const Duration(seconds: 2));
-    sceneryRecommendation = mockLocations.getRange(0, 2).toList();
-    if (foodRecommendation == null || accommodationRecommendation == null) {
-      emit(RecommendationLoading(
-          accommodation: accommodationRecommendation,
-          food: foodRecommendation,
-          scenery: sceneryRecommendation));
-    } else {
-      emit(RecommendationLoaded(
-          accommodation: accommodationRecommendation!,
-          food: foodRecommendation!,
-          scenery: sceneryRecommendation!));
-      add(const RequestSchedule());
-    }
-    // User user = userLocalSource.getUser()!;
-    // final response = await dio.get(
-    //   'https://localhost:8000/recommendation?userPrompt=我想去北京',
-    //   data: {
-    //     'user_prompt': event.userPrompt,
-    //     'user_features': user.toJson(),
-    //   },
-    // );
+    // await Future.delayed(const Duration(seconds: 2));
+    // sceneryRecommendation = mockLocations.getRange(0, 2).toList();
+    User user = userLocalSource.getUser()!;
+    log('${user.toJson()}');
+    final response = await dio.post('$apiUrl/get_attraction_plan',
+        data: {
+          'user_prompt': event.userPrompt,
+          'user_features': user.toJson(),
+        },
+        options: Options(headers: {
+          'Content-Type': 'application/json',
+        }));
 
-    // if (response.statusCode == 200) {
-    //   final locations = List<Location>.from(
-    //       response.data['locations'].map((e) => Location.fromJson(e)));
-    //   emit(RecommendationLoaded(locations: locations));
-    // } else {
-    //   emit(AiAssistantError(error: response.data));
-    // }
+    if (response.statusCode == 200) {
+      log('$response');
+      sceneryRecommendation = List<Location>.from(
+          response.data['places'].map((e) => Location.fromJson(e)));
+      if (foodRecommendation == null || accommodationRecommendation == null) {
+        emit(RecommendationLoading(
+            accommodation: accommodationRecommendation,
+            food: foodRecommendation,
+            scenery: sceneryRecommendation));
+      } else {
+        emit(RecommendationLoaded(
+            accommodation: accommodationRecommendation!,
+            food: foodRecommendation!,
+            scenery: sceneryRecommendation!));
+        add(const RequestSchedule());
+      }
+    } else {
+      emit(AiAssistantError(error: response.data));
+    }
   }
 
   Future<void> onRequestFoodRecommendation(
       RequestFoodRecommendation event, Emitter<AiAssistantState> emit) async {
     emit(const RecommendationLoading());
-    await Future.delayed(const Duration(seconds: 3));
-    foodRecommendation = mockLocations.getRange(2, 4).toList();
-    if (sceneryRecommendation == null || accommodationRecommendation == null) {
-      emit(RecommendationLoading(
-          accommodation: accommodationRecommendation,
-          food: foodRecommendation,
-          scenery: sceneryRecommendation));
+    // await Future.delayed(const Duration(seconds: 3));
+    // foodRecommendation = mockLocations.getRange(2, 4).toList();
+    User user = userLocalSource.getUser()!;
+    log('${user.toJson()}');
+    final response = await dio.post('$apiUrl/get_food_plan',
+        data: {
+          'user_prompt': event.userPrompt,
+          'user_features': user.toJson(),
+        },
+        options: Options(headers: {
+          'Content-Type': 'application/json',
+        }));
+
+    if (response.statusCode == 200) {
+      log('$response');
+      foodRecommendation = List<Location>.from(
+          response.data['places'].map((e) => Location.fromJson(e)));
+      if (sceneryRecommendation == null ||
+          accommodationRecommendation == null) {
+        emit(RecommendationLoading(
+            accommodation: accommodationRecommendation,
+            food: foodRecommendation,
+            scenery: sceneryRecommendation));
+      } else {
+        emit(RecommendationLoaded(
+            accommodation: accommodationRecommendation!,
+            food: foodRecommendation!,
+            scenery: sceneryRecommendation!));
+        add(const RequestSchedule());
+      }
     } else {
-      emit(RecommendationLoaded(
-          accommodation: accommodationRecommendation!,
-          food: foodRecommendation!,
-          scenery: sceneryRecommendation!));
-      add(const RequestSchedule());
+      emit(AiAssistantError(error: response.data));
     }
   }
 
@@ -96,19 +121,35 @@ class AiAssistantBloc extends Bloc<AiAssistantEvent, AiAssistantState> {
       RequestAccommodationRecommendation event,
       Emitter<AiAssistantState> emit) async {
     emit(const RecommendationLoading());
-    await Future.delayed(const Duration(seconds: 4));
-    accommodationRecommendation = mockLocations.getRange(4, 6).toList();
-    if (foodRecommendation == null || sceneryRecommendation == null) {
-      emit(RecommendationLoading(
-          accommodation: accommodationRecommendation,
-          food: foodRecommendation,
-          scenery: sceneryRecommendation));
+    User user = userLocalSource.getUser()!;
+    log('${user.toJson()}');
+    final response = await dio.post('$apiUrl/get_accommodation_plan',
+        data: {
+          'user_prompt': event.userPrompt,
+          'user_features': user.toJson(),
+        },
+        options: Options(headers: {
+          'Content-Type': 'application/json',
+        }));
+
+    if (response.statusCode == 200) {
+      log('$response');
+      accommodationRecommendation = List<Location>.from(
+          response.data['places'].map((e) => Location.fromJson(e)));
+      if (sceneryRecommendation == null || foodRecommendation == null) {
+        emit(RecommendationLoading(
+            accommodation: accommodationRecommendation,
+            food: foodRecommendation,
+            scenery: sceneryRecommendation));
+      } else {
+        emit(RecommendationLoaded(
+            accommodation: accommodationRecommendation!,
+            food: foodRecommendation!,
+            scenery: sceneryRecommendation!));
+        add(const RequestSchedule());
+      }
     } else {
-      emit(RecommendationLoaded(
-          accommodation: accommodationRecommendation!,
-          food: foodRecommendation!,
-          scenery: sceneryRecommendation!));
-      add(const RequestSchedule());
+      emit(AiAssistantError(error: response.data));
     }
   }
 
