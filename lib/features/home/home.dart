@@ -3,6 +3,7 @@ import 'package:travelity/constant/tags.dart';
 import 'package:travelity/features/ai_assistant/ai_assistant.dart';
 import 'package:travelity/features/home/profile.dart';
 import 'package:travelity/features/schedule/schedule.dart';
+import 'package:travelity/theme.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
