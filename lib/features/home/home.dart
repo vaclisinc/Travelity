@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
           ),
           NavigationDestination(
             icon: Icon(Icons.home),
-            label: 'AI助理',
+            label: '行程產生器',
           ),
           NavigationDestination(
             icon: Icon(Icons.person),

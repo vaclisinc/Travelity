@@ -44,8 +44,10 @@ class RequestAccommodationRecommendation extends AiAssistantEvent {
 }
 
 class RequestSchedule extends AiAssistantEvent {
-  const RequestSchedule();
+  const RequestSchedule({required this.schedules});
+
+  final List<List<ScheduleEvent>> schedules;
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [schedules];
 }

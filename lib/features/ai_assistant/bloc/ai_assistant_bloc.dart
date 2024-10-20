@@ -72,7 +72,52 @@ class AiAssistantBloc extends Bloc<AiAssistantEvent, AiAssistantState> {
             accommodation: accommodationRecommendation!,
             food: foodRecommendation!,
             scenery: sceneryRecommendation!));
-        add(const RequestSchedule());
+        add(RequestSchedule(schedules: [
+          [
+            ScheduleEvent(
+                id: '1',
+                startTime: '2023-07-01 10:00',
+                isCurrent: true,
+                location: sceneryRecommendation![0]),
+            ScheduleEvent(
+                id: '2',
+                startTime: '2023-07-01 10:00',
+                isCurrent: false,
+                location: foodRecommendation![0]),
+            ScheduleEvent(
+                id: '3',
+                startTime: '2023-07-01 10:00',
+                isCurrent: false,
+                location: sceneryRecommendation![1]),
+            ScheduleEvent(
+                id: '4',
+                startTime: '2023-07-01 10:00',
+                isCurrent: false,
+                location: accommodationRecommendation![0]),
+          ],
+          [
+            ScheduleEvent(
+                id: '5',
+                startTime: '2023-07-01 10:00',
+                isCurrent: true,
+                location: sceneryRecommendation![2]),
+            ScheduleEvent(
+                id: '6',
+                startTime: '2023-07-01 10:00',
+                isCurrent: false,
+                location: foodRecommendation![1]),
+            ScheduleEvent(
+                id: '7',
+                startTime: '2023-07-01 10:00',
+                isCurrent: false,
+                location: sceneryRecommendation![3]),
+            ScheduleEvent(
+                id: '8',
+                startTime: '2023-07-01 10:00',
+                isCurrent: false,
+                location: accommodationRecommendation![1]),
+          ]
+        ]));
       }
     } else {
       emit(AiAssistantError(error: response.data));
@@ -110,7 +155,53 @@ class AiAssistantBloc extends Bloc<AiAssistantEvent, AiAssistantState> {
             accommodation: accommodationRecommendation!,
             food: foodRecommendation!,
             scenery: sceneryRecommendation!));
-        add(const RequestSchedule());
+        add(RequestSchedule(schedules: [
+          [
+            ScheduleEvent(
+                id: '1',
+                startTime: '2023-07-01 10:00',
+                isCurrent: true,
+                location: sceneryRecommendation![0]),
+            ScheduleEvent(
+                id: '2',
+                startTime: '2023-07-01 10:00',
+                isCurrent: false,
+                location: foodRecommendation![0]),
+            ScheduleEvent(
+                id: '3',
+                startTime: '2023-07-01 10:00',
+                isCurrent: false,
+                location: sceneryRecommendation![1]),
+            ScheduleEvent(
+                id: '4',
+                startTime: '2023-07-01 10:00',
+                isCurrent: false,
+                location: accommodationRecommendation![0]),
+          ],
+          [
+            ScheduleEvent(
+                id: '5',
+                startTime: '2023-07-01 10:00',
+                isCurrent: true,
+                location: sceneryRecommendation![2]),
+            ScheduleEvent(
+                id: '6',
+                startTime: '2023-07-01 10:00',
+                isCurrent: false,
+                location: foodRecommendation![1]),
+            ScheduleEvent(
+                id: '7',
+                startTime: '2023-07-01 10:00',
+                isCurrent: false,
+                location: sceneryRecommendation![3]),
+            ScheduleEvent(
+                id: '8',
+                startTime: '2023-07-01 10:00',
+                isCurrent: false,
+                location: accommodationRecommendation![1]),
+          ]
+        ]));
+        // add(const RequestSchedule());
       }
     } else {
       emit(AiAssistantError(error: response.data));
@@ -146,7 +237,52 @@ class AiAssistantBloc extends Bloc<AiAssistantEvent, AiAssistantState> {
             accommodation: accommodationRecommendation!,
             food: foodRecommendation!,
             scenery: sceneryRecommendation!));
-        add(const RequestSchedule());
+        add(RequestSchedule(schedules: [
+          [
+            ScheduleEvent(
+                id: '1',
+                startTime: '2023-07-01 10:00',
+                isCurrent: true,
+                location: sceneryRecommendation![0]),
+            ScheduleEvent(
+                id: '2',
+                startTime: '2023-07-01 10:00',
+                isCurrent: false,
+                location: foodRecommendation![0]),
+            ScheduleEvent(
+                id: '3',
+                startTime: '2023-07-01 10:00',
+                isCurrent: false,
+                location: sceneryRecommendation![1]),
+            ScheduleEvent(
+                id: '4',
+                startTime: '2023-07-01 10:00',
+                isCurrent: false,
+                location: accommodationRecommendation![0]),
+          ],
+          [
+            ScheduleEvent(
+                id: '5',
+                startTime: '2023-07-01 10:00',
+                isCurrent: true,
+                location: sceneryRecommendation![2]),
+            ScheduleEvent(
+                id: '6',
+                startTime: '2023-07-01 10:00',
+                isCurrent: false,
+                location: foodRecommendation![1]),
+            ScheduleEvent(
+                id: '7',
+                startTime: '2023-07-01 10:00',
+                isCurrent: false,
+                location: sceneryRecommendation![3]),
+            ScheduleEvent(
+                id: '8',
+                startTime: '2023-07-01 10:00',
+                isCurrent: false,
+                location: accommodationRecommendation![1]),
+          ]
+        ]));
       }
     } else {
       emit(AiAssistantError(error: response.data));
@@ -156,7 +292,9 @@ class AiAssistantBloc extends Bloc<AiAssistantEvent, AiAssistantState> {
   Future<void> onRequestSchedule(
       RequestSchedule event, Emitter<AiAssistantState> emit) async {
     emit(ScheduleLoading());
-    await Future.delayed(const Duration(seconds: 2));
-    emit(ScheduleLoaded(schedules: mockEvents));
+    emit(ScheduleLoaded(schedules: event.schedules));
+
+    // await Future.delayed(const Duration(seconds: 2));
+    // emit(ScheduleLoaded(schedules: mockEvents));
   }
 }

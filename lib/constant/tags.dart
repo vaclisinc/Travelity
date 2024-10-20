@@ -66,18 +66,18 @@ const List<AccommodationTag> availAccommodationTags = [
 const List<Location> mockLocations = [
   Location(
       id: '1',
-      name: '新竹城隍廟',
-      reason: 'Location 1 description',
+      name: '新竹都城隍廟',
+      reason: '是位於臺灣新竹市北區中山里的城隍廟，廟身列為市定古蹟，主神為城隍信仰的都城隍爺。',
       imageUrl:
           'https://lh5.googleusercontent.com/p/AF1QipN2XLoDKctZTclJbIDyUpfnsve9yoBhNJVbJrKH=s773-k-no',
       mapUrl: 'https://maps.app.goo.gl/T5E3j2wqpnrm3MH4A',
       tags: ['tag1', 'tag2']),
   Location(
       id: '2',
-      name: '新竹勢力動物園',
+      name: '新竹市立動物園',
       reason: 'Location 2 description',
       imageUrl:
-          'https://www.google.com/maps/place/Hsinchu+Zoo/@24.8001508,120.9799311,3a,75y,90t/data=!3m8!1e2!3m6!1sAF1QipNme9aUhQrg3sKmzJV3xhCvIAMOSZoV59hCAKhK!2e10!3e12!6shttps:%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipNme9aUhQrg3sKmzJV3xhCvIAMOSZoV59hCAKhK%3Dw152-h86-k-no!7i4000!8i2250!4m10!1m2!2m1!1sgoogle+maps!3m6!1s0x346835dd9e16bf97:0x655055c03a215bcf!8m2!3d24.8001567!4d120.9799245!10e5!16s%2Fm%2F011qb1tq?entry=ttu&g_ep=EgoyMDI0MTAxNi4wIKXMDSoASAFQAw%3D%3D#',
+          'https://lh5.googleusercontent.com/p/AF1QipNme9aUhQrg3sKmzJV3xhCvIAMOSZoV59hCAKhK=w203-h114-k-no',
       mapUrl: 'https://maps.app.goo.gl/66ZJohyqhKFbP82W6',
       tags: ['tag1', 'tag2']),
   Location(

@@ -20,7 +20,7 @@ class AIAssistantBody extends StatelessWidget {
       create: (context) => sl(),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('AI助理'),
+          title: const Text('行程產生器'),
         ),
         body: BlocBuilder<AiAssistantBloc, AiAssistantState>(
           builder: (context, state) {
