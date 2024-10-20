@@ -1,52 +1,64 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:timelines/timelines.dart';
 import 'package:travelity/core/model/schedule_event_m.dart';
+import 'package:travelity/features/ai_assistant/bloc/ai_assistant_bloc.dart';
 import 'package:travelity/features/location/location_detail.dart';
+import 'package:travelity/get_it.dart';
 
 class ScheduleBody extends StatelessWidget {
-  const ScheduleBody({super.key, required this.allEvents});
-
-  final List<List<ScheduleEvent>> allEvents;
+  const ScheduleBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('推薦行程'),
-      ),
-      body: DefaultTabController(
-        initialIndex: 0,
-        length: allEvents.length,
-        child: Column(
-          children: [
-            TabBar(
-              tabs: List.generate(allEvents.length, (index) {
-                return Tab(
-                    // text: 'Day ${index + 1}',
-                    child: Column(children: [
-                  Text(
-                    'Day ${index + 1}',
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  // Text(allEvents[0].first.startTime)
-                ]));
-              }),
-            ),
-            Expanded(
-              child: TabBarView(
-                physics: const NeverScrollableScrollPhysics(),
-                children: List.generate(allEvents.length, (index) {
-                  return ScheduleTimeLine(
-                    events: allEvents[index],
-                  );
-                }),
+    return BlocProvider<AiAssistantBloc>(
+      create: (context) => sl(),
+      child: BlocBuilder<AiAssistantBloc, AiAssistantState>(
+        builder: (context, state) {
+          if (state is ScheduleLoaded) {
+            return Scaffold(
+              appBar: AppBar(
+                title: const Text('推薦行程'),
               ),
-            ),
-          ],
-        ),
+              body: DefaultTabController(
+                initialIndex: 0,
+                length: state.schedules.length,
+                child: Column(
+                  children: [
+                    TabBar(
+                      tabs: List.generate(state.schedules.length, (index) {
+                        return Tab(
+                            // text: 'Day ${index + 1}',
+                            child: Column(children: [
+                          Text(
+                            'Day ${index + 1}',
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          // Text(allEvents[0].first.startTime)
+                        ]));
+                      }),
+                    ),
+                    Expanded(
+                      child: TabBarView(
+                        physics: const NeverScrollableScrollPhysics(),
+                        children:
+                            List.generate(state.schedules.length, (index) {
+                          return ScheduleTimeLine(
+                            events: state.schedules[index],
+                          );
+                        }),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          }
+          return const Center(child: Text('目前尚無推薦行程'));
+        },
       ),
     );
   }
@@ -91,16 +103,16 @@ class ScheduleTimeLine extends StatelessWidget {
               },
               child: Padding(
                 padding:
-                    const EdgeInsets.only(left: 16.0, bottom: 20.0, top: 15),
+                    const EdgeInsets.only(left: 16.0, bottom: 40.0, top: 30),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       event.location.name,
                       style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: event.isCurrent ? Colors.blue : Colors.black,
-                      ),
+                          fontWeight: FontWeight.bold,
+                          color: event.isCurrent ? Colors.blue : Colors.black,
+                          fontSize: 18),
                     ),
                     const SizedBox(height: 4),
                     Text(

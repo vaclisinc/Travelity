@@ -16,6 +16,33 @@ class RequestRecommendation extends AiAssistantEvent {
   List<Object> get props => [userPrompt];
 }
 
+class RequestSceneryRecommendation extends AiAssistantEvent {
+  const RequestSceneryRecommendation({required this.userPrompt});
+
+  final String userPrompt;
+
+  @override
+  List<Object> get props => [userPrompt];
+}
+
+class RequestFoodRecommendation extends AiAssistantEvent {
+  const RequestFoodRecommendation({required this.userPrompt});
+
+  final String userPrompt;
+
+  @override
+  List<Object> get props => [userPrompt];
+}
+
+class RequestAccommodationRecommendation extends AiAssistantEvent {
+  const RequestAccommodationRecommendation({required this.userPrompt});
+
+  final String userPrompt;
+
+  @override
+  List<Object> get props => [userPrompt];
+}
+
 class RequestSchedule extends AiAssistantEvent {
   const RequestSchedule();
 

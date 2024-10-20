@@ -18,10 +18,10 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: IndexedStack(
         index: currentPageIndex,
-        children: [
-          ScheduleBody(allEvents: mockEvents),
-          const AIAssistantBody(),
-          const ProfileBody(),
+        children: const [
+          ScheduleBody(),
+          AIAssistantBody(),
+          ProfileBody(),
         ],
       ),
       bottomNavigationBar: NavigationBar(

@@ -4,20 +4,32 @@ sealed class AiAssistantState extends Equatable {
   const AiAssistantState();
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }
 
 final class AiAssistantInitial extends AiAssistantState {}
 
-final class RecommendationLoading extends AiAssistantState {}
+final class RecommendationLoading extends AiAssistantState {
+  const RecommendationLoading({this.scenery, this.food, this.accommodation});
 
-final class RecommendationLoaded extends AiAssistantState {
-  const RecommendationLoaded({required this.locations});
-
-  final List<Location> locations;
+  final List<Location>? scenery;
+  final List<Location>? food;
+  final List<Location>? accommodation;
 
   @override
-  List<Object> get props => [locations];
+  List<Object?> get props => [scenery, food, accommodation];
+}
+
+final class RecommendationLoaded extends AiAssistantState {
+  const RecommendationLoaded(
+      {required this.scenery, required this.food, required this.accommodation});
+
+  final List<Location> scenery;
+  final List<Location> food;
+  final List<Location> accommodation;
+
+  @override
+  List<Object> get props => [scenery, food, accommodation];
 }
 
 final class ScheduleLoading extends AiAssistantState {}

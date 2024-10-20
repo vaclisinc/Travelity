@@ -11,5 +11,5 @@ Future<void> initGetIt() async {
       await SharedPreferences.getInstance());
   sl.registerSingleton<UserLocalSource>(UserLocalSource(sl()));
   sl.registerFactory<UserSetupBloc>(() => UserSetupBloc(sl()));
-  sl.registerFactory<AiAssistantBloc>(() => AiAssistantBloc(sl()));
+  sl.registerSingleton<AiAssistantBloc>(AiAssistantBloc(sl()));
 }
