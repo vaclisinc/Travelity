@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 class Hint extends StatelessWidget {
-  const Hint({super.key, required this.generating});
+  const Hint({super.key, required this.generating, this.onChangePage});
 
+  final Function(int)? onChangePage;
   final bool generating;
 
   @override
@@ -15,7 +16,11 @@ class Hint extends StatelessWidget {
           borderRadius: BorderRadius.circular(30.0),
         ),
       ),
-      onPressed: generating ? null : () {},
+      onPressed: generating
+          ? null
+          : () {
+              onChangePage?.call(0);
+            },
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [

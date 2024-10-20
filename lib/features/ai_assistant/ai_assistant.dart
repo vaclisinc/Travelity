@@ -10,7 +10,9 @@ import 'package:travelity/features/location/location_preview.dart';
 import 'package:travelity/get_it.dart';
 
 class AIAssistantBody extends StatelessWidget {
-  const AIAssistantBody({super.key});
+  const AIAssistantBody({super.key, this.onChangePage});
+
+  final Function(int)? onChangePage;
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +72,7 @@ class AIAssistantBody extends StatelessWidget {
                     return const Hint(generating: true);
                   }
                   if (state is ScheduleLoaded) {
-                    return const Hint(generating: false);
+                    return Hint(generating: false, onChangePage: onChangePage);
                   }
                   return Container();
                 }),
@@ -78,8 +80,9 @@ class AIAssistantBody extends StatelessWidget {
                   builder: (context, state) {
                     log('$state');
                     return PromptField(
-                        active: (state is! RecommendationLoading &&
-                            state is! ScheduleLoading));
+                      active: (state is! RecommendationLoading &&
+                          state is! ScheduleLoading),
+                    );
                   },
                 ),
               ],
