@@ -2,7 +2,7 @@
 
 Travelity is a personalized travel assistant that tailors itineraries based on user preferences, personality, and travel style. By integrating real-time data, Travelity provides unique, dynamic recommendations that adapt to each user's unique needs, making every journey truly customized.
 
-[![Travelity Intro](https://via.placeholder.com/300)](https://www.example.com/travelity-presentation.pdf)  
+[![Travelity Intro](https://raw.githubusercontent.com/vaclisinc/Travelity/30f44e4b110bf506f831c4c4e5f2db07b9aa92fb/presentation/Travelity./1.png)]([https://github.com/vaclisinc/Travelity/blob/30f44e4b110bf506f831c4c4e5f2db07b9aa92fb/presentation/Travelity..pdf]))  
 *Click on the image to view our full presentation PDF*
 
 ## Features
