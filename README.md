@@ -1,6 +1,8 @@
-# Travelity. : Travel with Your Personality
+# Travelity : Travel with Your Personality
 
-Travelity is a personalized travel assistant that tailors itineraries based on user preferences, personality, and travel style. By integrating real-time data, Travelity provides unique, dynamic recommendations that adapt to each user's unique needs, making every journey truly customized.
+Travelity is a web-based application designed to provide personalized travel itineraries by integrating user interests, personality, and travel pace with real-time data. By utilizing APIs and AI-driven agents, Travelity tailors unique travel experiences that adapt to each user’s preferences, making each journey both enjoyable and personalized.
+
+This project was developed during a 24-hour non-stop Meichu Hackathon (group Google), where we were selected as one of the top teams. We proudly secured second place, winning a prize of NT$16,000.
 
 [![Travelity Intro](https://raw.githubusercontent.com/vaclisinc/Travelity/30f44e4b110bf506f831c4c4e5f2db07b9aa92fb/presentation/Travelity./1.png)]([https://github.com/vaclisinc/Travelity/blob/30f44e4b110bf506f831c4c4e5f2db07b9aa92fb/presentation/Travelity..pdf])  
 *Click on the image to view our full presentation PDF*
