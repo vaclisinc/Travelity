@@ -4,7 +4,7 @@ Travelity is a web-based application designed to provide personalized travel iti
 
 This project was developed during a 24-hour non-stop Meichu Hackathon (group Google), where we were selected as one of the top teams. We proudly secured second place, winning a prize of NT$16,000.
 
-[![Travelity Intro](https://raw.githubusercontent.com/vaclisinc/Travelity/30f44e4b110bf506f831c4c4e5f2db07b9aa92fb/presentation/Travelity./1.png)]([https://github.com/vaclisinc/Travelity/blob/30f44e4b110bf506f831c4c4e5f2db07b9aa92fb/presentation/Travelity..pdf])  
+[![Travelity Intro](https://raw.githubusercontent.com/vaclisinc/Travelity/30f44e4b110bf506f831c4c4e5f2db07b9aa92fb/presentation/Travelity./1.png)](https://github.com/vaclisinc/Travelity/blob/30f44e4b110bf506f831c4c4e5f2db07b9aa92fb/presentation/Travelity..pdf)  
 *Click on the image to view our full presentation PDF*
 
 ## Features
